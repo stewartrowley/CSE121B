@@ -54,13 +54,118 @@ function copyInput(event) {
 }
 
 
+// // example 1
+// const steps = ['one', 'two', 'three'];
+// // callback declaration
+// function makeList(item) {
+//   const listElement = document.getElementById('myList');
+//   listElement.innerHTML += `<li>${item}</li>`;
+// }
+// steps.forEach(makeList);
+
+// example 2
+// is the luckyNumber in the list?
+const myArray = [12, 34, 21, 54];
+const luckyNumber = 21;
+// let luckyIndex = -1;
+myArray.forEach(function(item, index) {
+  if(item === luckyNumber) {
+    let luckyIndex = index;
+    console.log(luckyIndex);
+  }
+});
+
+
+// map Method
 // example 1
 const steps = ['one', 'two', 'three'];
-// callback declaration
-function makeList(item) {
-  const listElement = document.getElementById('myList');
-  listElement.innerHTML += `<li>${item}</li>`;
+const stepsHtml = steps.map(function(step) {
+  return `<li>${step}</li>`;
+});
+document.getElementById('myList').innerHTML = stepsHtml.join(' ');
+
+// example 2
+const grades = ['A', 'B', 'A'];
+function convertGradeToPoints(grade) {
+  let points = 0;
+  if(grade === 'A') {
+    points = 4;
+  } else if (grade === 'B') {
+    points = 3;
+  }
+  return points;
 }
-steps.forEach(makeList);
+// const gpaPoints = grades.map(convertGradeToPoints);
+
+
+// reduce method
+
+// example 1
+// see map example for where the gpaPoints array came from...
+const gpaPoints = grades.map(convertGradeToPoints);
+const pointsTotal = gpaPoints.reduce(function(total, item) {
+  return total + item;
+});
+const gpa = pointsTotal / gpaPoints.length;
+console.log(gpa)
+
+// example 2
+// this is the same thing as above, but with an arrow function
+// const pointsTotal = gpaPoints.reduce((total, item) => total + item);
+// const gpa = pointsTotal / gpaPoints.length;
+
+// this could be further simplified as
+// const gpa = gpaPoints.reduce((total, item) => total + item) / gpaPoints.length;
+      
+//indexOf
+  // improved luckyNumber
+//   const myArray = [12, 34, 21, 54];
+//   const luckyNumber = 21;
+  let luckyIndex = myArray.indexOf(luckyNumber);
+  console.log(luckyIndex)
+
+//filter
+
+const words = ['watermelon', 'peach', 'apple', 'tomato', 'grape'];
+const shortWords = words.filter(function(word) {
+  return word.length < 6;
+});
+
+// //same thing with an arrow function
+// const shortWords = words.filter((word) => word.length < 6);
+
+// Homework guide 
+
+// Example 1
+const nums = [1, 2, 3, 4];
+
+// function getEvens(num) {
+//     if (num % 2 === 0)
+//     return num;
+// };
+
+// let even = nums.filter(getEvens);
+// console.log(even);
+
+// With Arrow function
+let evens = nums.filter(num => num % 2 === 0);
+console.log(evens);
+
+// times number by 2
+
+const buttonElement2 = document.querySelector('#submitButton');
+
+// function multiply() {
+//     const inputElement2 = document.querySelector('#inputBox');
+//     const outputElement2 = document.querySelector('#outputBox');
+//     let number inputElement2.value;
+//     outputElement2.textContent = number * 2;
+// }
+
+// buttonElement2.addEventListener('click', multiply)
+
+
+
+
 
 
